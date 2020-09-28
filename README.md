@@ -1,2 +1,3 @@
-# test-technique-edumedia
-Test technique JS EduMedia
+# Test technique pour Edumedia
+
+Test concernant JavaScript et Canvas. 👨‍💻
