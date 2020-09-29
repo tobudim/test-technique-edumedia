@@ -38,7 +38,9 @@ import getClickedOnCircle from "./scripts/get-clicked-on-circle.js";
 
   canvas.onmousemove = (event) => {
     if (!mouseIsDown) return;
+
     const circle = { ...clickedCircle };
+    const updatedCircles = [...circles];
     const currentPosition = {
       x: parseInt(event.clientX - bouding.left, 10),
       y: parseInt(event.clientY - bouding.top, 10),
@@ -49,9 +51,8 @@ import getClickedOnCircle from "./scripts/get-clicked-on-circle.js";
     };
     circle.position.x += movement.x;
     circle.position.y += movement.y;
-
-    const index = circles.indexOf(clickedCircle);
-    circles.splice(index, 1, circle);
+    const index = updatedCircles.indexOf(clickedCircle);
+    updatedCircles.splice(index, 1, circle);
 
     context.clearRect(0, 0, canvas.width, canvas.height);
     draw(context, center, circles);
