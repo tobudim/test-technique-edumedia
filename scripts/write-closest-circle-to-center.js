@@ -24,7 +24,6 @@ function getColorOfClosestCircleToCenter(circles, center) {
   let closestCircle = {
     distanceFromCenter: { x: 2000, y: 2000 },
   };
-  console.log("center", center);
   circles.forEach((circle) => {
     const { position } = circle;
     const distanceFromCenter = {
