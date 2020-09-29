@@ -1,41 +1,62 @@
 "use strict";
-import drawCenterCircle from "./scripts/draw-center-circle.js";
-import drawThreeCircles from "./scripts/draw-three-circles.js";
-import writeClosestCircleToCenter from "./scripts/write-closest-circle-to-center.js";
-import manageMouseDragDrop from "./scripts/manage-mouse-drag-drop.js";
+
+import draw from "./scripts/draw.js";
+import initCircles from "./scripts/init-circles.js";
+import getClickedOnCircle from "./scripts/get-clicked-on-circle.js";
 
 (() => {
   const canvas = document.getElementById("canvas");
-  const bouding = canvas.getBoundingClientRect();
 
   // Browser supports canvas ? If not, stop here.
   if (!canvas.getContext) return;
 
+  const bouding = canvas.getBoundingClientRect();
   const context = canvas.getContext("2d");
-  const circles = drawThreeCircles(context);
   const center = {
     x: canvas.width / 2,
     y: canvas.height / 2,
   };
+  let circles = initCircles;
+  let clickedCircle = null;
+  let mouseIsDown = false;
+  let mousePosition = {};
 
-  drawCenterCircle(context, center);
-  writeClosestCircleToCenter(context, circles, center);
+  draw(context, center, circles);
 
   canvas.onmousedown = function (event) {
     event.preventDefault();
     event.stopPropagation();
-    const mousePosition = {
-      x: parseInt(event.clientX - bouding.left),
-      y: parseInt(event.clientY - bouding.top),
+    const clickedPosition = {
+      x: parseInt(event.clientX - bouding.left, 10),
+      y: parseInt(event.clientY - bouding.top, 10),
     };
-    const updatedCircles = manageMouseDragDrop(
-      canvas,
-      context,
-      circles,
-      mousePosition,
-      bouding,
-      center
-    );
-    // writeClosesCircleToCenter(context, circles);
+    clickedCircle = getClickedOnCircle(circles, clickedPosition);
+    if (!clickedCircle) return;
+    mouseIsDown = true;
+    mousePosition = clickedPosition;
   };
+
+  canvas.onmousemove = (event) => {
+    if (!mouseIsDown) return;
+    const circle = { ...clickedCircle };
+    const currentPosition = {
+      x: parseInt(event.clientX - bouding.left, 10),
+      y: parseInt(event.clientY - bouding.top, 10),
+    };
+    const movement = {
+      x: currentPosition.x - mousePosition.x,
+      y: currentPosition.y - mousePosition.y,
+    };
+    circle.position.x += movement.x;
+    circle.position.y += movement.y;
+
+    const index = circles.indexOf(clickedCircle);
+    circles.splice(index, 1, circle);
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    draw(context, center, circles);
+    mousePosition = currentPosition;
+  };
+
+  canvas.onmouseup = () => (mouseIsDown = false);
 })();
