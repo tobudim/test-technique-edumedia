@@ -31,8 +31,8 @@ function getColorOfClosestCircleToCenter(circles, center) {
       y: Math.abs(position.y - center.y),
     };
     if (
-      distanceFromCenter.x + distanceFromCenter.y <
-      closestCircle.distanceFromCenter.x + closestCircle.distanceFromCenter.y
+      hypotenus(distanceFromCenter) <
+      hypotenus(closestCircle.distanceFromCenter)
     ) {
       closestCircle = {
         ...circle,
@@ -40,6 +40,10 @@ function getColorOfClosestCircleToCenter(circles, center) {
       };
     }
   });
+
+  function hypotenus({ x, y }) {
+    return Math.sqrt(x * x + y * y);
+  }
 
   return closestCircle.fillColor;
 }

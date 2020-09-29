@@ -7,8 +7,7 @@ import getClickedOnCircle from "./scripts/get-clicked-on-circle.js";
 (() => {
   const canvas = document.getElementById("canvas");
 
-  // Browser supports canvas ? If not, stop here.
-  if (!canvas.getContext) return;
+  if (!canvas.getContext) return; // stop if no support
 
   const bouding = canvas.getBoundingClientRect();
   const context = canvas.getContext("2d");
