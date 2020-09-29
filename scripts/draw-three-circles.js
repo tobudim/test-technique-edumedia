@@ -2,8 +2,8 @@ import drawCircle from "./draw-circle.js";
 
 /**
  * Draw three centers in canvas
- * => Return circles parameters
- * @param {object} canvas context
+ * => Return void
+ * @param {object} context
  * @param {array} circles
  */
 export default function drawThreeCircles(context, circles) {
@@ -11,5 +11,5 @@ export default function drawThreeCircles(context, circles) {
     const { fillColor, strokeColor, radius, position } = circle;
     drawCircle(context, fillColor, strokeColor, radius, position);
   });
-  return circles;
+  return;
 }

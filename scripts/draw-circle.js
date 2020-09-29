@@ -1,9 +1,10 @@
 /**
  * Draw one circle according to parameters
  * => Return void
- * @param {object} canvas context
- * @param {string} fillColor color
- * @param {string} strokeColor color
+ * @param {object} context
+ * @param {string} fillColor
+ * @param {string} strokeColor
+ * @param {string} radius
  * @param {object} position of circle { x, y }
  */
 export default function drawCircle(
@@ -11,9 +12,8 @@ export default function drawCircle(
   fillColor,
   strokeColor,
   radius,
-  position
+  { x, y }
 ) {
-  const { x, y } = position;
   context.fillStyle = fillColor;
   context.strokeStyle = strokeColor;
   context.lineWidth = 7;
