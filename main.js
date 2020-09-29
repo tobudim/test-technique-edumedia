@@ -9,12 +9,12 @@ import getClickedOnCircle from "./scripts/get-clicked-on-circle.js";
 
   if (!canvas.getContext) return; // stop if no support
 
-  const bouding = canvas.getBoundingClientRect();
   const context = canvas.getContext("2d");
   const center = {
     x: canvas.width / 2,
     y: canvas.height / 2,
   };
+  let bouding = null;
   let circles = initCircles;
   let clickedCircle = null;
   let mouseIsDown = false;
@@ -25,6 +25,7 @@ import getClickedOnCircle from "./scripts/get-clicked-on-circle.js";
   canvas.onmousedown = function (event) {
     event.preventDefault();
     event.stopPropagation();
+    bouding = canvas.getBoundingClientRect();
     const clickedPosition = {
       x: parseInt(event.clientX - bouding.left, 10),
       y: parseInt(event.clientY - bouding.top, 10),
@@ -38,6 +39,7 @@ import getClickedOnCircle from "./scripts/get-clicked-on-circle.js";
   canvas.onmousemove = (event) => {
     if (!mouseIsDown) return;
 
+    bouding = canvas.getBoundingClientRect();
     const circle = { ...clickedCircle };
     const updatedCircles = [...circles];
     const currentPosition = {
