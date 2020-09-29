@@ -1,5 +1,7 @@
 # Test technique pour Edumedia
 
-Test concernant JavaScript et Canvas. 👨‍💻
+👨‍💻 JavaScript et Canvas.
 
-![Capture de l'exercice]('/readme/exercice.png');
+✅ Afficher le cercle le plus proche du centre, tout en pouvant bouger les cercles avec la souris.
+
+![Capture de l'exercice](./readme/exercice.png);
