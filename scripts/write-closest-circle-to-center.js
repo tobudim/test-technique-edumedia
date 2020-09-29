@@ -5,7 +5,7 @@
  * @param {array} circles parameters [{}]
  * @param {object} center references { x, y }
  */
-export default function writeClosesCircleToCenter(context, circles, center) {
+export default function writeClosestCircleToCenter(context, circles, center) {
   const colorToWrite = getColorOfClosestCircleToCenter(circles, center);
 
   context.fillStyle = "black";

@@ -1,3 +1,5 @@
+import drawCircle from "./draw-circle.js";
+
 /**
  * Draw three centers in canvas
  * => Return circles parameters
@@ -26,26 +28,7 @@ export default function drawThreeCircles(context) {
   ];
   circles.forEach((circle) => {
     const { fillColor, strokeColor, radius, position } = circle;
-    return drawCircle(context, fillColor, strokeColor, radius, position);
+    drawCircle(context, fillColor, strokeColor, radius, position);
   });
   return circles;
-}
-
-/**
- * Draw one circle according to parameters
- * => Return void
- * @param {object} canvas context
- * @param {string} fillColor color
- * @param {string} strokeColor color
- * @param {object} position of circle { x, y }
- */
-function drawCircle(context, fillColor, strokeColor, radius, { x, y }) {
-  context.fillStyle = fillColor;
-  context.strokeStyle = strokeColor;
-  context.lineWidth = 7;
-  context.beginPath();
-  context.arc(x, y, radius, 0, 2 * Math.PI);
-  context.fill();
-  context.stroke();
-  return;
 }
