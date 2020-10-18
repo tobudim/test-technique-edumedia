@@ -41,5 +41,5 @@ function getColorOfClosestCircleToCenter(circles, center) {
     return Math.sqrt(x * x + y * y);
   }
 
-  return closestCircle.fillColor;
+  return closestCircle.colorName;
 }
