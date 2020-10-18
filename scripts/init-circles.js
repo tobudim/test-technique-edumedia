@@ -9,7 +9,7 @@ const initCircles = [
   },
   {
     fillColor: "#F5F078",
-    colorName: "Blue",
+    colorName: "Yellow",
     strokeColor: "#FADA6E",
     radius: 50,
     position: { x: 850, y: 500 },
@@ -18,7 +18,7 @@ const initCircles = [
   {
     fillColor: "#6162F5",
     strokeColor: "#3232A8",
-    colorName: "Yellow",
+    colorName: "Blue",
     radius: 50,
     position: { x: 500, y: 650 },
     lineWidth: 3,

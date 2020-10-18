@@ -9,7 +9,11 @@ export default function writeClosestCircleToCenter(context, circles, center) {
   const colorToWrite = getColorOfClosestCircleToCenter(circles, center);
   context.fillStyle = "black";
   context.font = "2.5em Arial";
-  context.fillText(colorToWrite, center.x - 25, 100);
+  context.textAlign = "center";
+  context.fillText(colorToWrite.colorName, center.x, 100);
+  context.strokeStyle = colorToWrite.fillColor;
+  context.rect(center.x - 30, 110, 60, 1);
+  context.stroke();
   return;
 }
 
@@ -41,5 +45,7 @@ function getColorOfClosestCircleToCenter(circles, center) {
     return Math.sqrt(x * x + y * y);
   }
 
-  return closestCircle.colorName;
+  const { fillColor, colorName } = closestCircle;
+
+  return { fillColor, colorName };
 }
