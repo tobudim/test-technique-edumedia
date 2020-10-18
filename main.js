@@ -1,5 +1,6 @@
 "use strict";
 
+import circleTakesHeight from "./scripts/circle-takes-height.js";
 import draw from "./scripts/draw.js";
 import initCircles from "./scripts/init-circles.js";
 import getClickedOnCircle from "./scripts/get-clicked-on-circle.js";
@@ -28,6 +29,7 @@ import getCursorPosition from "./scripts/get-cursor-position.js";
     clickedCircle = getClickedOnCircle(circles, clickedPosition);
     if (!clickedCircle) return;
     mouseIsDown = true;
+    circleTakesHeight(clickedCircle);
     mousePosition = clickedPosition;
   };
 

@@ -7,6 +7,6 @@ import drawCircle from "./draw-circle.js";
  * @param {object} center position { x, y}
  */
 export default function drawCenterCircle(context, center) {
-  drawCircle(context, "black", "black", 10, center);
+  drawCircle(context, "#7A3300", "#7A3300", 2, center);
   return;
 }

@@ -8,8 +8,8 @@ import drawCircle from "./draw-circle.js";
  */
 export default function drawThreeCircles(context, circles) {
   circles.forEach((circle) => {
-    const { fillColor, strokeColor, radius, position } = circle;
-    drawCircle(context, fillColor, strokeColor, radius, position);
+    const { fillColor, strokeColor, radius, position, lineWidth } = circle;
+    drawCircle(context, fillColor, strokeColor, radius, position, lineWidth);
   });
   return;
 }
